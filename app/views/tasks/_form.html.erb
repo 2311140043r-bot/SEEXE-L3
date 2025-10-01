@@ -1,0 +1,36 @@
+<%= form_with model: @task do |f| %>
+  <% if @task.errors.any? %>
+    <div class="error-messages">
+      <h4><%= @task.errors.count %>件のエラーがあります</h4>
+      <ul>
+        <% @task.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description, "説明" %><br>
+    <%= f.text_area :description, rows: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :due_date, "期日" %><br>
+    <%= f.date_field :due_date %>
+  </div>
+
+  <div>
+    <%= f.label :priority, "優先度(整数)" %><br>
+    <%= f.number_field :priority %>
+  </div>
+
+  <div style="margin-top: 8px;">
+    <%= f.submit %>
+  </div>
+<% end %>

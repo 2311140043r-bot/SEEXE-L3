@@ -1,0 +1,27 @@
+<h1>タスク一覧</h1>
+
+<p><%= link_to "新規作成", new_task_path %></p>
+
+<table border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>期日</th>
+      <th>優先度</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task %></td>
+        <td><%= task.due_date&.strftime("%Y-%m-%d") %></td>
+        <td><%= task.priority %></td>
+        <td>
+          <%= link_to "編集", edit_task_path(task) %> |
+          <%= link_to "削除", task, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

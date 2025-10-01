@@ -1,0 +1,12 @@
+<h1>Bookmarks</h1>
+
+<% if @bookmarks.present? %>
+  <% @bookmarks.each do |book| %>
+    <p>
+      <strong><%= link_to book.title, book.url %></strong><br>
+      <%= book.memo %>
+    </p>
+  <% end %>
+<% else %>
+  <p>まだ登録がありません。</p>
+<% end %>
